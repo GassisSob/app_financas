@@ -45,6 +45,13 @@ export async function signup(
     return { error: "Não foi possível criar a conta. Tente outro e-mail." };
   }
 
+  // Proteção do Supabase contra descoberta de e-mails: ao cadastrar um e-mail
+  // que JÁ existe, ele retorna sucesso (sem erro), mas com identities vazio e
+  // sem sessão. Detectamos isso e orientamos a fazer login.
+  if (data.user && (data.user.identities?.length ?? 0) === 0) {
+    return { error: "Este e-mail já está cadastrado. Faça login." };
+  }
+
   // Quando a confirmação de e-mail está ativada, o signUp não cria sessão.
   // Avisamos o usuário em vez de redirecionar silenciosamente para o login.
   if (!data.session) {
