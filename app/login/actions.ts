@@ -50,7 +50,7 @@ export async function signup(
   if (!data.session) {
     return {
       message:
-        "Conta criada! Confirme o cadastro pelo link enviado ao seu e-mail e depois faça login.",
+        "Conta criada! Enviamos um link de verificação para o seu e-mail. Confirme o cadastro e depois faça login. Não encontrou? Verifique também a caixa de spam/lixo eletrônico.",
     };
   }
 
