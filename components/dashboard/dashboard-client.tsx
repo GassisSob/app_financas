@@ -14,6 +14,7 @@ import {
 import { CATEGORIES } from "@/lib/categories";
 import type { Transaction } from "@/lib/types";
 import { transactionsToCsv, downloadCsv } from "@/lib/csv";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { SummaryCards } from "./summary-cards";
 import { CategoryChart } from "./category-chart";
 import { TransactionTable } from "./transaction-table";
@@ -99,10 +100,11 @@ export function DashboardClient({ email, transactions }: Props) {
             </div>
             <span className="text-lg font-semibold">Finanças Pessoais</span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <span className="hidden text-sm text-muted-foreground sm:inline">
               {email}
             </span>
+            <ThemeToggle />
             <form action="/auth/signout" method="post">
               <Button variant="ghost" size="icon" type="submit" title="Sair">
                 <LogOut className="h-4 w-4" />
