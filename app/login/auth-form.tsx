@@ -71,9 +71,14 @@ export function AuthForm() {
               />
             </div>
 
-            {state?.error && (
+            {state && "error" in state && (
               <p className="text-sm font-medium text-destructive">
                 {state.error}
+              </p>
+            )}
+            {state && "message" in state && (
+              <p className="rounded-md bg-emerald-50 p-3 text-sm font-medium text-emerald-700">
+                {state.message}
               </p>
             )}
 
